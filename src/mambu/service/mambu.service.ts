@@ -1,26 +1,23 @@
 import { Injectable } from '@nestjs/common';
-import { CreateMambuDto } from '../dto/create-mambu.dto';
-import { UpdateMambuDto } from '../dto/update-mambu.dto';
-
+import { ConfigService } from "@nestjs/config";
+import { UserInfo } from '../dto/UserInfo';
+import { AccountInfo } from '../dto/AccountInfo';
 @Injectable()
 export class MambuService {
-  create(createMambuDto: CreateMambuDto) {
-    return 'This action adds a new mambu';
+  constructor(private configService: ConfigService) {}
+
+  // Obtenemos un cliente por ID
+  async getClientById(clientId: string) : Promise<UserInfo> {
+    clientId = '445345901'
+    const urlMambu = this.configService.get<string>("URL_MAMBU") + "/clients/" + clientId;
+    return await fetch(urlMambu).then((res) => res.json());
   }
 
-  findAll() {
-    return `This action returns all mambu`;
+  // Obtenemos la cuenta de un cliente
+  async getAccountById(accountId: string) : Promise<AccountInfo>{
+    accountId = '99887766'
+    const urlMambu = this.configService.get<string>("URL_MAMBU") + "/deposits/" + accountId
+    return await fetch(urlMambu).then((res) => res.json());
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} mambu`;
-  }
-
-  update(id: number, updateMambuDto: UpdateMambuDto) {
-    return `This action updates a #${id} mambu`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} mambu`;
-  }
 }

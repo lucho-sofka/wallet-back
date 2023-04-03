@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { MambuService } from './mambu.service';
-import { MambuController } from './mambu.controller';
+import { MambuService } from '../mambu/service/mambu.service';
+import { MambuController } from '../mambu/controller/mambu.controller';
 
 @Module({
   controllers: [MambuController],
