@@ -1,18 +1,17 @@
-import { Controller, Get, Param } from '@nestjs/common';
-import { MambuService } from '../service/mambu.service';
+import { Controller, Get, Param } from "@nestjs/common";
+import { MambuService } from "../service/mambu.service";
 
-
-@Controller('mambu')
+@Controller("mambu")
 export class MambuController {
   constructor(private readonly mambuService: MambuService) {}
 
-  @Get('client/:id')
-  async getClientById(@Param('id') id: string) {
+  @Get("client/:id")
+  async getClientById(@Param("id") id: string) {
     return await this.mambuService.getClientById(id);
   }
 
-  @Get('client/account/:id')
-  async getAccountById(@Param('id') id: string) {
+  @Get("client/account/:id")
+  async getAccountById(@Param("id") id: string) {
     return await this.mambuService.getAccountById(id);
   }
 }
