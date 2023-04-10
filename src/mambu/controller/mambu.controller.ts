@@ -14,4 +14,9 @@ export class MambuController {
   async getAccountById(@Param("id") id: string) {
     return await this.mambuService.getAccountById(id);
   }
+
+  @Get("deposits/:accountId/transactions")
+  async getClientTransactions(@Param("accountId") accountId: string) {
+    return await this.mambuService.getClientTransactions(accountId);
+  }
 }

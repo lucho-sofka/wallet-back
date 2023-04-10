@@ -5,13 +5,16 @@ import { PtsService } from "../service/pts.service";
 export class PtsController {
   constructor(private readonly ptsService: PtsService) {}
 
-  @Post(":identificationId")
+  @Post()
   async sendInfoTransfer(
-    @Param("id") identificationId: string,
+    @Body("ordererId") ordererId: string,
+    @Body("reciverId") reciverId: string,
     @Body("transactionAmount") transactionAmount: string
   ) {
+    console.log(reciverId, ordererId, transactionAmount);
     return await this.ptsService.sendInfoTransfer(
-      identificationId,
+      ordererId,
+      reciverId,
       transactionAmount
     );
   }
