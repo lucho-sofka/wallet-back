@@ -15,4 +15,9 @@ export class MambuController {
   async getAccountById(@Param('id') id: string) {
     return await this.mambuService.getAccountById(id);
   }
+
+  @Get('client/:id/alldata')
+  async getAllClientData(@Param('id') id: string) {
+    return await this.mambuService.getAllClientData(id);
+  }
 }

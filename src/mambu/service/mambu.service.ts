@@ -35,4 +35,18 @@ export class MambuService {
     }).then((res) => res.json());
   }
 
+  //Obtener todos los datos del usuario a partir de su ID.
+  async getAllClientData(clientId: string){
+    const urlMambu = this.configService.get<string>("URL_MAMBU") + "/clients/" + clientId + "/savings"
+    const userData = await fetch(urlMambu, {
+      headers: {
+        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*',
+        Accept: 'application/vnd.mambu.v2+json',
+        Authorization:
+          'Basic ' + window.btoa(this.configService.get<string>("USER_MAMBU") + ':' + this.configService.get<string>("PWD_MAMBU")),
+      }
+    }).then((res) => res.json());
+  return userData;
+  }
 }
