@@ -1,13 +1,21 @@
-import { Body, Controller, Param, Post } from '@nestjs/common';
-import { PtsService } from '../service/pts.service';
+import { Body, Controller, Param, Post } from "@nestjs/common";
+import { PtsService } from "../service/pts.service";
 
-@Controller('pts')
+@Controller("pts")
 export class PtsController {
   constructor(private readonly ptsService: PtsService) {}
 
-  @Post(':identificationId/')
-  async sendInfoTransfer(@Param('id') identificationId: string, @Body('transactionAmount') transactionAmount: string){
-    return await this.ptsService.sendInfoTransfer(identificationId, transactionAmount)
+  @Post()
+  async sendInfoTransfer(
+    @Body("ordererId") ordererId: string,
+    @Body("reciverId") reciverId: string,
+    @Body("transactionAmount") transactionAmount: string
+  ) {
+    console.log(reciverId, ordererId, transactionAmount);
+    return await this.ptsService.sendInfoTransfer(
+      ordererId,
+      reciverId,
+      transactionAmount
+    );
   }
-  
 }

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "workbench.iconTheme": "material-icon-theme",
     "material-icon-theme.activeIconPack": "nest",
     "material-icon-theme.folders.theme": "specific",
@@ -7,3 +8,10 @@
         "nestjs"
     ]
 }
+=======
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "nest",
+  "material-icon-theme.folders.theme": "specific",
+  "explorer.compactFolders": false
+}
+>>>>>>> 1e0cc2a2a8f9bf369c15a065eb3da78f74f26719
